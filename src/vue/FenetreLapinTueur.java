@@ -1,14 +1,16 @@
 package vue;
 
+import coffre.Coffre;
+
 import java.awt.*;
 import javax.swing.*;
 
-public class FenetreLapinTueur extends JFrame {
+public class FenetreLapinTueur extends JFrame implements Observateur{
 
     private JTextField txtLapin;
 
     public FenetreLapinTueur() {
-        setTitle("Lapin du Chateau M�di�val");
+        setTitle("Lapin du Chateau Médiéval");
         setBounds(700, 500, 190, 130);
         Container contentPane = getContentPane();
         contentPane.setLayout(new FlowLayout());
@@ -23,8 +25,13 @@ public class FenetreLapinTueur extends JFrame {
 
     public void afficherLapin(boolean libre) {
         if (libre == true)
-            txtLapin.setText("Le lapin tueur est lib�r�");
+            txtLapin.setText("Le lapin tueur est libéré");
         else
-            txtLapin.setText("Le lapin tueur est enferm�");
+            txtLapin.setText("Le lapin tueur est enfermé");
+    }
+
+    @Override
+    public void notifier(Coffre coffre) {
+        afficherLapin(coffre.lapinEstLibere());
     }
 }

@@ -1,5 +1,7 @@
 package vue;
 
+import coffre.CoffreFacade;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -15,8 +17,11 @@ public class FenetreChateauMedieval extends JFrame implements ActionListener,
     private JButton btFermerCoffre;
     private JButton btQuitter;
 
+    private CoffreFacade coffre;
 
-    public FenetreChateauMedieval() {
+
+    public FenetreChateauMedieval(CoffreFacade coffre) {
+        this.coffre = coffre;
 
         setTitle("exercice Chateau Médiéval (F02)");
         setBounds(500, 100, 400, 200);
@@ -61,21 +66,16 @@ public class FenetreChateauMedieval extends JFrame implements ActionListener,
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == btOterLivre)
-            System.out.println("Vous venez d'appuyer sur le bouton Oter Livre UML");
+            coffre.oterLivre();
         if (e.getSource() == btRemettreLivre)
-            System.out.println("Vous venez d'appuyer sur le bouton Remettre Livre UML");
+            coffre.remettreLivre();
         if (e.getSource() == btTournerGauche)
-            System.out.println("Vous venez d'appuyer sur le bouton Tourner Chandelle vers la Gauche");
-        ;
+            coffre.tournerChandelleVersGauche();
         if (e.getSource() == btTournerDroite)
-            System.out.println("Vous venez d'appuyer sur le bouton Tourner Chandelle vers la Droite");
-        ;
+            coffre.tournerChandelleVersDroite();
         if (e.getSource() == btFermerCoffre)
-            System.out.println("Vous venez d'appuyer sur le bouton Fermer Coffre");
-        ;
+            coffre.fermerCoffre();
         if (e.getSource() == btQuitter) {
-            System.out.println("Vous venez d'appuyer sur le bouton Quitter");
-            ;
             System.exit(0);
         }
     }
@@ -147,11 +147,6 @@ public class FenetreChateauMedieval extends JFrame implements ActionListener,
 			btRemettreLivre.setVisible(false);
 		}
 */
-
-    public static void main(String[] args) {
-        FenetreChateauMedieval c = new FenetreChateauMedieval();
-    }
-
 
 }
 

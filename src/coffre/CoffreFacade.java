@@ -4,7 +4,11 @@ public class CoffreFacade implements I_CoffreChateau{
     private I_CoffreChateau coffre;
 
     public CoffreFacade() {
-        coffre = new Coffre();
+        this(new Coffre());
+    }
+
+    public CoffreFacade(Coffre coffre){
+        this.coffre = coffre;
     }
 
     @Override

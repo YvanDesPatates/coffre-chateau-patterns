@@ -1,9 +1,11 @@
 package vue;
 
+import coffre.Coffre;
+
 import java.awt.*;
 import javax.swing.*;
 
-public class FenetreEtat extends JFrame {
+public class FenetreEtat extends JFrame implements Observateur {
 
     private JTextField txtEtat;
 
@@ -18,10 +20,15 @@ public class FenetreEtat extends JFrame {
         txtEtat = new JTextField(15);
         contentPane.add(txtEtat);
         setVisible(true);
-        afficherEtat("pas d'�tat");
+        afficherEtat("pas d'état");
     }
 
     public void afficherEtat(String etat) {
         txtEtat.setText(etat);
+    }
+
+    @Override
+    public void notifier(Coffre coffre) {
+        afficherEtat(coffre.nomEtat());
     }
 }

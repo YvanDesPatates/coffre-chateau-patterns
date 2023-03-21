@@ -2,11 +2,17 @@ package coffre;
 
 import etat_coffre.CacheParBibliotheque;
 import etat_coffre.EtatCoffre;
+import vue.Observateur;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Coffre implements I_CoffreChateau{
     private boolean chienLibre = false;
     private boolean lapinLibre = false;
     private EtatCoffre etat = CacheParBibliotheque.getInstance();
+
+    private List<Observateur> observateurs = new ArrayList();
 
     @Override
     public void oterLivre() {
@@ -62,5 +68,15 @@ public class Coffre implements I_CoffreChateau{
 
     public void setEtat(EtatCoffre etat) {
         this.etat = etat;
+        notifier();
+    }
+
+    public void addObservateur(Observateur observateur){
+        observateurs.add(observateur);
+        observateur.notifier(this);
+    }
+
+    private void notifier(){
+        observateurs.forEach(observateur -> observateur.notifier(this));
     }
 }

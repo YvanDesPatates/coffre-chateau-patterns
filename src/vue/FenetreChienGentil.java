@@ -1,14 +1,16 @@
 package vue;
 
+import coffre.Coffre;
+
 import java.awt.*;
 import javax.swing.*;
 
-public class FenetreChienGentil extends JFrame {
+public class FenetreChienGentil extends JFrame implements Observateur{
 
     private JTextField txtChien;
 
     public FenetreChienGentil() {
-        setTitle("Chien du Chateau M�di�val");
+        setTitle("Chien du Chateau Médiéval");
         setBounds(300, 500, 190, 130);
         Container contentPane = getContentPane();
         contentPane.setLayout(new FlowLayout());
@@ -23,8 +25,13 @@ public class FenetreChienGentil extends JFrame {
 
     public void afficherChien(boolean libre) {
         if (libre == true)
-            txtChien.setText("Le chien gentil est lib�r�");
+            txtChien.setText("Le chien gentil est libéré");
         else
-            txtChien.setText("Le chien gentil est enferm�");
+            txtChien.setText("Le chien gentil est enfermé");
+    }
+
+    @Override
+    public void notifier(Coffre coffre) {
+        afficherChien(coffre.chienEstLibere());
     }
 }
