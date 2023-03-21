@@ -23,4 +23,20 @@ public abstract class EtatCoffre {
     public void fermerCoffre(Coffre coffre) {
 
     }
+
+    public boolean peutOterLivre(){
+        return false;
+    }
+    public boolean peutRemettreLivre(){
+        return false;
+    }
+    public boolean peutTournerChandelleGauche(){
+        return false;
+    }
+    public boolean peutTournerChandelleDroite(){
+        return false;
+    }
+    public boolean peutFermerCoffre(){
+        return false;
+    }
 }

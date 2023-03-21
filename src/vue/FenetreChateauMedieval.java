@@ -1,5 +1,6 @@
 package vue;
 
+import coffre.Coffre;
 import coffre.CoffreFacade;
 
 import java.awt.*;
@@ -8,7 +9,7 @@ import javax.swing.*;
 
 
 public class FenetreChateauMedieval extends JFrame implements ActionListener,
-        WindowListener {
+        WindowListener, Observateur{
 
     private JButton btOterLivre;
     private JButton btRemettreLivre;
@@ -104,50 +105,69 @@ public class FenetreChateauMedieval extends JFrame implements ActionListener,
     }
 
 		
-/*		
+
 	private void afficherBtChandelle()
 		{
 			btTournerDroite.setVisible(true);
 			btTournerGauche.setVisible(true);
 		}
-		
+
 		private void cacherBtChandelle()
 		{
 			btTournerDroite.setVisible(false);
 			btTournerGauche.setVisible(false);
 		}
-		
+
 		private void afficherBtFermerCoffre()
 		{
 			btFermerCoffre.setVisible(true);
 		}
-		
+
 		private void cacherBtFermerCoffre()
 		{
 			btFermerCoffre.setVisible(false);
 		}
-		
+
 		private void afficherBtOterLivre()
 		{
 			btOterLivre.setVisible(true);
 		}
-		
+
 		private void cacherBtOterLivre()
 		{
 			btOterLivre.setVisible(false);
 		}
-		
+
 		private void afficherBtRemettreLivre()
 		{
 			btRemettreLivre.setVisible(true);
 		}
-		
+
 		private void cacherBtRemettreLivre()
 		{
 			btRemettreLivre.setVisible(false);
 		}
-*/
 
+
+    @Override
+    public void notifier(Coffre coffre) {
+        cacherBtOterLivre();
+        if (coffre.peutOterLivreUML()){
+            afficherBtOterLivre();
+        }
+        cacherBtRemettreLivre();
+        if (coffre.peutRemettreLivreUML()){
+            afficherBtRemettreLivre();
+        }
+        cacherBtFermerCoffre();
+        if (coffre.peutFermerCoffre()){
+            afficherBtFermerCoffre();
+        }
+        cacherBtChandelle();
+        if (coffre.peutTournerChandelleDroite() && coffre.peutTournerChandelleGauche()){
+            afficherBtChandelle();
+        }
+    }
 }
 
 	

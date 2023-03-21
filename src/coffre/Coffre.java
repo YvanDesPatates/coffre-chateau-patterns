@@ -71,6 +71,22 @@ public class Coffre implements I_CoffreChateau{
         notifier();
     }
 
+    public boolean peutOterLivreUML(){
+        return etat.peutOterLivre();
+    }
+    public boolean peutRemettreLivreUML(){
+        return etat.peutRemettreLivre();
+    }
+    public boolean peutTournerChandelleGauche(){
+        return etat.peutTournerChandelleGauche();
+    }
+    public boolean peutTournerChandelleDroite(){
+        return etat.peutTournerChandelleDroite();
+    }
+    public boolean peutFermerCoffre(){
+        return etat.peutFermerCoffre();
+    }
+
     public void addObservateur(Observateur observateur){
         observateurs.add(observateur);
         observateur.notifier(this);

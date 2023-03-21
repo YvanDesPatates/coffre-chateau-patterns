@@ -21,4 +21,9 @@ public class CacheParBibliotheque extends EtatCoffre{
     public void oterLivre(Coffre coffre) {
         coffre.setEtat(Ferme.getInstance());
     }
+
+    @Override
+    public boolean peutOterLivre() {
+        return true;
+    }
 }

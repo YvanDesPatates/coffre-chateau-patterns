@@ -11,6 +11,21 @@ public abstract class Visible extends EtatCoffre{
     }
 
     @Override
+    public boolean peutRemettreLivre() {
+        return true;
+    }
+
+    @Override
+    public boolean peutTournerChandelleGauche() {
+        return true;
+    }
+
+    @Override
+    public boolean peutTournerChandelleDroite() {
+        return true;
+    }
+
+    @Override
     public void tournerChandelleVersGauche(Coffre coffre) {
         coffre.libererLapinTueur();
         coffre.setEtat(Bloque.getInstance());
