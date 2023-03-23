@@ -1,6 +1,6 @@
 package vue;
 
-import coffre.Coffre;
+import model.Coffre;
 
 import java.awt.*;
 import javax.swing.*;

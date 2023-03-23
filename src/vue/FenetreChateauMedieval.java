@@ -1,7 +1,7 @@
 package vue;
 
-import coffre.Coffre;
-import coffre.CoffreFacade;
+import controleur.ControleurCoffreInterface;
+import model.Coffre;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -18,11 +18,11 @@ public class FenetreChateauMedieval extends JFrame implements ActionListener,
     private JButton btFermerCoffre;
     private JButton btQuitter;
 
-    private CoffreFacade coffre;
+    private ControleurCoffreInterface controleurCoffre;
 
 
-    public FenetreChateauMedieval(CoffreFacade coffre) {
-        this.coffre = coffre;
+    public FenetreChateauMedieval(ControleurCoffreInterface controleurCoffre) {
+        this.controleurCoffre = controleurCoffre;
 
         setTitle("exercice Chateau Médiéval (F02)");
         setBounds(500, 100, 400, 200);
@@ -67,15 +67,15 @@ public class FenetreChateauMedieval extends JFrame implements ActionListener,
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == btOterLivre)
-            coffre.oterLivre();
+            controleurCoffre.oterLivre();
         if (e.getSource() == btRemettreLivre)
-            coffre.remettreLivre();
+            controleurCoffre.remettreLivre();
         if (e.getSource() == btTournerGauche)
-            coffre.tournerChandelleVersGauche();
+            controleurCoffre.tournerChandelleVersGauche();
         if (e.getSource() == btTournerDroite)
-            coffre.tournerChandelleVersDroite();
+            controleurCoffre.tournerChandelleVersDroite();
         if (e.getSource() == btFermerCoffre)
-            coffre.fermerCoffre();
+            controleurCoffre.fermerCoffre();
         if (e.getSource() == btQuitter) {
             System.exit(0);
         }
